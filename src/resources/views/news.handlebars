@@ -1,0 +1,15 @@
+<div class="mt-5">
+    <div class="clow">
+        {{#each news}}
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{{this.image}}" alt="Card image">
+            <div class="card-img-overlay">
+                <h5 class="card-title">{{this.newspaper}}</h5>
+                <p class="card-text">{{this.test}}</p>
+                <a href="{{this.link}}" class="card-text">Xem ngay</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+

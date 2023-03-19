@@ -1,0 +1,175 @@
+{{!-- <div class="mt-4">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>{{product.name}}</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{product.videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p><a href="/news/{{product.id_new}}">xem bài báo</a></p>
+            <div  style="margin-top: 60px height: 300px; ">
+                <p style="margin-left: 5px;">{{product.test}}</p>
+            </div>
+            <div class="col-lg-3">
+                <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4" style="margin-right: 300px;">
+    
+        <div class="row  d-flex justify-content-center">
+    
+            <div class="col-lg-12">
+    
+                <div class="headings d-flex justify-content-between align-items-center mb-3">
+                    <h5>Unread comments(6)</h5>
+    
+                    <div class="buttons">
+    
+                        <span class="badge bg-white d-flex flex-row align-items-center">
+                            <span class="text-primary">Comments "ON"</span>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+    
+                            </div>
+                        </span>
+    
+                    </div>
+    
+                </div>
+                
+            
+</div> --}}
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img src="{{product.img}}" /></div>
+                            {{!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> 
+                             --}}
+
+                        </div>
+                        {{!-- <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
+                                        src="{{product.image}}" /></a></li>
+                            <li><a data-target="#pic-2" data-toggle="tab"><img
+                                        src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-3" data-toggle="tab"><img
+                                        src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-4" data-toggle="tab"><img
+                                        src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-5" data-toggle="tab"><img
+                                        src="http://placekitten.com/200/126" /></a></li>
+                        </ul> --}}
+
+                   
+                        
+
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{product.name}}</h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                        </div>
+                        <p class="product-description">{{product.test}}</p>
+                        <h4 class="price">current price: <span>{{product.price}}</span></h4>
+                       
+                        </p>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ hàng</button>
+                        </div>
+                        <form method="POST" action="/bill/hoadon">
+                            <input type="checkbox" value="{{product._id}}" name="id_product" checked>
+                            <input type="checkbox" value="{{product.price}}" name="price" checked>
+                            <button class="add-to-cart btn btn-default" type="submit">Mua ngay</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-1">
+            {{#each user}}
+                <div><small class="font-weight-bold text-primary">{{this.username}}</small></div>
+            {{/each}}
+            </div>
+            <div  class="col-11">
+            {{#each comment}}
+            <div class="d-flex  align-items-center">
+        
+                <div class="user d-flex flex-row align-items-center">
+                    {{!-- <img src="{{this.anh}}" width="30" class="user-img rounded-circle mr-2"> --}}
+                    <span>
+                        {{!-- {{#each user}} --}}
+                        {{!-- {{/each}} --}}
+                        
+                        <small class="font-weight-bold">{{this.content}}</small>
+                        <small style="font-weight: bold; color:rgb(255, 0, 0)">{{this.point}}</small><label for="5">☆</label>
+                    </span>
+                </div>
+                {{!-- <small>2 days ago</small> --}}
+        
+            </div>
+            {{/each}}
+            </div>
+        </div>
+        <form action="/comments/input" method="POST">
+            <h4>Add a comment</h4>
+            <div>
+                <input type="radio" name="point" value="1">
+                <input type="radio" name="point" value="2">
+                <input type="radio" name="point" value="3">
+                <input type="radio" name="point" value="4">
+                <input type="radio" name="point" value="5">
+            </div>
+
+            <div class="comment-area">
+            
+                <textarea class="form-control" placeholder="what is your view?" rows="4" type="text" name="content"></textarea>
+                <input type="checkbox" name="id" checked value="{{product._id}}">
+                <button type="submit">submit</button>
+            </div>
+           
+           
+        </form>
+    </div>
+    </div>
+
+</body>
+
+</html>

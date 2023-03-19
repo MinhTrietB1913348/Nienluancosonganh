@@ -1,0 +1,59 @@
+{{#each user}}
+<h2>{{this.username}}</h2>
+{{/each}}
+{{!-- <h1>{{user.username}}</h1> --}}
+{{# if products}}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="list-group">
+            {{#each products }}
+            <div class="list-group-item border">
+                <img src="{{this.item.img}}" class="card-img-top" alt="" style="width: 10rem;">
+                <div>
+                    <a class="card-title">{{this.item.name}}</a>
+                </div>
+                <div>
+                    <span class="badge price-cart">Giá: {{ this.item.price }}</span>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="carts/reduce/{{ this.item._id }}">Giảm 1</a>
+                            <a class="dropdown-item" href="carts/remove/{{ this.item._id }}">Loại bỏ </a>
+                        </div>
+                    </div>
+                    <span class="total">{{ this.qty }}</span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <strong>Tổng Cộng: {{ this.totalPrice }}</strong>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <a href="/order/order" class="btn btn-raised  btn-success">Thanh Toan</a>
+    </div>
+</div>
+{{else}}
+<div class="empty">
+    <h2>Rất tiếc, giỏ hàng của bạn trống</h2>
+    <img src="https://bizweb.dktcdn.net/100/368/179/themes/738982/assets/empty-cart.png?1655829755743" alt="Empty cart">
+</div>
+{{/if}}
+
+<style>
+    .empty {
+        text-align: center;
+    }
+</style>
